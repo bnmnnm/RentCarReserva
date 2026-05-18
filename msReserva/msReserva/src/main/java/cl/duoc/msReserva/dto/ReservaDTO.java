@@ -1,5 +1,7 @@
 package cl.duoc.msReserva.dto;
 
+import java.util.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,5 +15,9 @@ public class ReservaDTO {
 
     private ClienteDTO clienteDTO;
 
-    private TipoReservaDTO tipoReservaDTO;
+    private VehiculoDTO vehiculoDTO;
+
+    private Date fechaInicioReserva;
+
+    private Date fechaFinReserva;
 }

@@ -1,7 +1,10 @@
 package cl.duoc.msReserva.model;
 
+import java.util.Date;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,6 +26,18 @@ public class Reserva {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @Column(name = "cliente_id", nullable = false)
+    private Integer clienteId;
+
+    @Column(name = "vehiculo_id", nullable = false)
+    private Integer vehiculoId;
+
+    @Column(nullable = false)
+    private Date fechaInicioReserva;
+
+    @Column(nullable = false)
+    private Date fechaFinReserva;
 
     @ManyToOne
     @JoinColumn(name = "id_tipoReserva")
