@@ -76,7 +76,7 @@ public class ReservaController {
         }
     }
 
-    @GetMapping("/id/{id}")
+    @GetMapping("/dto/{id}")
     public ResponseEntity<ReservaDTO> reservaCompleta(@PathVariable Integer id){
         try {
             ReservaDTO reserva = service.obtenerDetalleReserva(id);

@@ -27,9 +27,9 @@ public class DataLoader {
                 tipoReservaRepo.save(tipo2);
                 tipoReservaRepo.save(tipo3);
 
-                Reserva reserva1 = new Reserva(null, 1, 1, null, null, tipo1);
-                Reserva reserva2 = new Reserva(null, 2, 2, null, null, tipo2);
-                Reserva reserva3 = new Reserva(null, 3, 3, null, null, tipo3);
+                Reserva reserva1 = new Reserva(null, 1, 1, new java.util.Date(), new java.util.Date(), tipo1);
+                Reserva reserva2 = new Reserva(null, 2, 2, new java.util.Date(), new java.util.Date(), tipo2);
+                Reserva reserva3 = new Reserva(null, 3, 3, new java.util.Date(), new java.util.Date(), tipo3);
 
                 reservaRepo.save(reserva1);
                 reservaRepo.save(reserva2);
