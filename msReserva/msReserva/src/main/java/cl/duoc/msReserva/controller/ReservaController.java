@@ -16,15 +16,21 @@ import org.springframework.web.bind.annotation.RestController;
 import cl.duoc.msReserva.dto.ReservaDTO;
 import cl.duoc.msReserva.model.Reserva;
 import cl.duoc.msReserva.service.ReservaService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 @RequestMapping("/api/v1/reservas")
+@Tag(name = "Reserva", description = "Controlador de reservas")
 public class ReservaController {
 
     @Autowired
     private ReservaService service;
 
     @GetMapping
+    @Operation(summary = "Listar reservas", 
+               description = "Obtiene una lista de todas las reservas registradas en el sistema."
+            )
     public ResponseEntity<List<Reserva>> listar(){
 
         try {
@@ -37,6 +43,10 @@ public class ReservaController {
     }
 
     @PostMapping
+    @Operation(summary = "Guardar reserva",
+                description = "Permite guardar una nueva reserva en el sistema."
+
+    )
     public ResponseEntity<Reserva> guardar(@RequestBody Reserva reserva){
         try {
             Reserva reservaNueva = service.guardarReserva(reserva);
@@ -47,6 +57,9 @@ public class ReservaController {
     }
 
     @GetMapping("/{id}")
+    @Operation(summary = "Buscar reserva por ID",
+                description = "Permite buscar una reserva específica en el sistema utilizando su ID único."
+    )
     public ResponseEntity<Reserva> buscarPorID(@PathVariable Integer id){
         try {
             Reserva reserva = service.buscarReserva(id);
@@ -57,6 +70,10 @@ public class ReservaController {
     }
 
     @DeleteMapping("/{id}")
+    @Operation(summary = "Eliminar reserva por ID",
+            description = "Permite eliminar una reserva especifica del sistema utilizando su ID unico"
+
+    )
     public ResponseEntity<?> eliminarPorId(@PathVariable Integer id){
         try {
             service.eliminarReserva(id);
@@ -67,6 +84,9 @@ public class ReservaController {
     }
 
     @PutMapping("/id/{id}")
+    @Operation(summary = "Actualizar reserva por ID",
+                description = "Permite actualizar la información de una reserva específica en el sistema utilizando su ID único."
+    )
     public ResponseEntity<Reserva> actualizar(@PathVariable Integer id, Reserva reservaActualizado){
         try {
             Reserva reserva = service.actualizarReserva(id, reservaActualizado);
@@ -77,6 +97,9 @@ public class ReservaController {
     }
 
     @GetMapping("/dto/{id}")
+    @Operation(summary = "Obtener reserva completa por ID",
+        description = "Permite obtener la informacion completa de una reserva especifica en el sistema utilizando el ID"
+    )
     public ResponseEntity<ReservaDTO> reservaCompleta(@PathVariable Integer id){
         try {
             ReservaDTO reserva = service.obtenerDetalleReserva(id);
