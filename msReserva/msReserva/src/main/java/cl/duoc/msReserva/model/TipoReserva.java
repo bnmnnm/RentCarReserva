@@ -1,6 +1,7 @@
 package cl.duoc.msReserva.model;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,7 +24,7 @@ public class TipoReserva {
     @Schema(description = "Identificador único del tipo de reserva", example = "1")
     private Integer id;
 
-    
+    @Column(nullable = false)
     @Schema(description = "Nombre del tipo de reserva", example = "Reserva de vehículo")
     private String nombre;
 
